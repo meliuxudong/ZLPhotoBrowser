@@ -17,23 +17,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    [[UINavigationBar appearance] setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:19/255.0 green:153/255.0 blue:231/255.0 alpha:1]] forBarMetrics:UIBarMetricsDefault];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    
     return YES;
-}
-
-- (UIImage *)imageWithColor:(UIColor*)color
-{
-    CGRect rect=CGRectMake(0,0, 1, 1);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return theImage;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
